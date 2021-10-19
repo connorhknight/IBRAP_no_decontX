@@ -69,11 +69,39 @@ prepare.reticulate <- function() {
   
   if(isFALSE(reticulate::py_module_available('louvain'))) {
     
-    cat(crayon::cyan('louvain is not install, please try manually: louvain==0.7.0\n'))
+    cat(crayon::cyan('louvain is not install, please try manually: louvain\n'))
     
   } else {
     
     cat(crayon::cyan('louvain installed.\n'))
+    
+  }
+  
+  ####################################################
+  
+  reticulate::py_install('leiden', pip = T)
+  
+  if(isFALSE(reticulate::py_module_available('leiden'))) {
+    
+    cat(crayon::cyan('leiden is not install, please try manually: leiden\n'))
+    
+  } else {
+    
+    cat(crayon::cyan('louvain installed.\n'))
+    
+  }
+  
+  ####################################################
+  
+  reticulate::py_install('leidenalg', pip = T)
+  
+  if(isFALSE(reticulate::py_module_available('leidenalg'))) {
+    
+    cat(crayon::cyan('leidenalg is not install, please try manually: leidenalgn'))
+    
+  } else {
+    
+    cat(crayon::cyan('leidenalg installed.\n'))
     
   }
   
