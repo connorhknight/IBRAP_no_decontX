@@ -1,0 +1,53 @@
+Package: IBRAP
+Type: Package
+Title: Integrated Benchmarking scRNA-seq Analytical Pipeline
+Version: 1.0.0
+Author: Connor Harry Knight
+Maintainer: The package maintainer <c.h.knight@qmul.ac.uk>
+Description: This package integrates numerous leading scRNA-seq analytical components
+    into one major framework. These components can all be applied to the dataset or
+    you can stick to one pipeline. If numerous have been generated, benchmarking
+    metrices can be applied to ascertain which pipeline performed best. A tutorial
+    on how to use IBRAP can be found at: https://github.com/connorhknight/IBRAP
+Authors@R: c(
+    person("Connor", "Knight", ,"connorhknight@gmail.co.uk", 
+    role = c("aut", "cre"),
+    ),
+    person("Faraz", "Khan", ,"faraz.k89@gmail.com",
+    role = c("aut", "cre"))
+  )
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.1
+Imports: 
+    crayon (>= 1.4.1),
+    Seurat (>= 4.0.3),
+    cluster (>= 2.1.2),
+    clValid (>= 0.7),
+    mclust (>= 5.4.7),
+    aricode (>= 1.0.0),
+    Matrix (>= 1.3-4),
+    reticulate (>= 1.20-90),
+    celda (>= 1.9.2),
+    topGO (>= 2.42.0),
+    stringr (>= 1.40.0),
+    harmony (>= 0.1.0),
+    uwot (>= 0.1.10),
+    PCAtools (>= 2.2.0),
+    ggplot2(>= 2.2.0),
+    SingleCellExperiment (>= 1.12.0),
+    SC3 (>= 1.18.0),
+    scran (>= 1.18.7),
+    scuttle (>= 1.0.4),
+    cowplot (>= 1.1.1),
+    slingshot (>= 1.8.0),
+    ProjectionBasedClustering (>= 1.1.6),
+    egg (>= 0.4.5),
+    RColorBrewer (>= 1.1-2),
+    plotly (>= 4.9.4.1),
+    colorspace (>= 2.0-2),
+    utils (>= 4.0.4),
+    ggrepel (>= 0.9.1),
+    
+    
+    
