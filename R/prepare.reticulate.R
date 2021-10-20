@@ -106,9 +106,9 @@ prepare.reticulate <- function() {
   }
   
   ####################################################
-
+  
   reticulate::py_install('annoy==1.16.0', pip = T)
-
+  
   if(isFALSE(reticulate::py_module_available('annoy'))) {
     
     cat(crayon::cyan('annoy is not install, please try manually: annoy==1.16.0\n'))
