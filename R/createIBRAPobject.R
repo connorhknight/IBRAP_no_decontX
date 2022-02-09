@@ -11,6 +11,7 @@
 #' @param meta.data data.frame of extra metadata to append to generated dataframe. Warning: Must be in the same order and colnames
 #' @param min.cells Numerical value of the minimum number of cells a gene should be present in
 #' @param min.features Numerical value minimum features that should be present in a cell
+#' @param verbose Logical Should function messages be printed?
 #' 
 #' @usage createIBRAPobject(counts = counts, original.project = 'project_1', method.name = 'RAW', meta.data = df, min.cells = 3, min.features = 200)
 #' 
@@ -27,11 +28,11 @@
 
 createIBRAPobject <- function(counts, 
                               original.project, 
-                              add.suffix = FALSE,
-                              method.name = 'RAW', 
+                              add.suffix = FALSE, 
                               meta.data = NULL,
                               min.cells=NULL,
-                              min.features=NULL) {
+                              min.features=NULL,
+                              verbose = FALSE) {
   
   if(!is.character(original.project)) {
     
@@ -39,9 +40,9 @@ createIBRAPobject <- function(counts,
     
   }
   
-  if(!is.character(method.name)) {
+  if(!is.logical(verbose)) {
     
-    stop('method.name must be a character string \n')
+    stop('verbose should be logical, TRUE/FALSE \n')
     
   }
   
@@ -115,7 +116,7 @@ createIBRAPobject <- function(counts,
   
   colnames(meta) <- as.character('original.project')
   
-  meta.2 <- cell_metadata(assay = counts, col.prefix = method.name)
+  meta.2 <- cell_metadata(assay = counts, col.prefix = 'RAW')
   
   for(f in colnames(meta.2)) {
     
@@ -125,12 +126,16 @@ createIBRAPobject <- function(counts,
   
   rownames(meta) <- colnames(counts)
 
-  f.metadata <- feature_metadata(assay = counts, col.prefix = method.name)
+  f.metadata <- feature_metadata(assay = counts, col.prefix = 'RAW')
   
   if(!is.null(meta.data)) {
-
-    cat(crayon::cyan('Concatenating metadata \n'))
     
+    if(isTRUE(verbose)) {
+      
+      cat(crayon::cyan(paste0(Sys.time(), ': concatenating metadata \n')))
+      
+    }
+
     l1 <- colnames(meta)
     
     l2 <- colnames(meta.data)
@@ -160,7 +165,7 @@ createIBRAPobject <- function(counts,
   
   methods <- list()
   
-  methods[[as.character(method.name)]] <- first.method
+  methods[[as.character('RAW')]] <- first.method
   
   IBRAP.obj <- new(Class = 'IBRAP', 
                    methods = methods, 
